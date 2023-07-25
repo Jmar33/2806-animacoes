@@ -7,6 +7,7 @@ import { Tarefa } from '../interface/tarefa';
 import {
   checkButtonTrigger,
   filterTrigger,
+  formButtonTrigger,
   highlightedStateTrigger,
   shownStateTrigger,
 } from '../animations';
@@ -20,6 +21,7 @@ import {
     shownStateTrigger,
     checkButtonTrigger,
     filterTrigger,
+    formButtonTrigger,
   ],
 })
 export class ListaTarefasComponent implements OnInit {

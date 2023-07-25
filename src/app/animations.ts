@@ -1,5 +1,6 @@
 import {
   animate,
+  group,
   keyframes,
   state,
   style,
@@ -85,7 +86,8 @@ export const filterTrigger = trigger('filterAnimation', [
           width: 0,
         }),
         style({
-          opacity: 0.8,
+          offset: 0.8,
+          opacity: 1,
           width: '*',
           backgroundColor: 'lightgreen',
         }),
@@ -104,6 +106,57 @@ export const filterTrigger = trigger('filterAnimation', [
     animate(
       '400ms cubic-bezier(.17,.67,.32,1.47)',
       style({ opacity: '0', width: '0' })
+    ),
+  ]),
+]);
+
+export const formButtonTrigger = trigger('formButton', [
+  transition('invalid => valid', [
+    // Podemos usar o group para combinar duas animações de forma que elas aconteçam de forma simultânea
+    group([
+      animate(
+        600,
+        style({
+          backgroundColor: '#63B77C',
+        })
+      ),
+      animate(
+        100,
+        style({
+          transform: 'scale(1.1)',
+        })
+      ),
+    ]),
+
+    animate(
+      200,
+      style({
+        transform: 'scale(1)',
+      })
+    ),
+  ]),
+  transition('valid => invalid', [
+    // Podemos usar o group para combinar duas animações de forma que elas aconteçam de forma simultânea
+    group([
+      animate(
+        600,
+        style({
+          backgroundColor: '#6C757D',
+        })
+      ),
+      animate(
+        100,
+        style({
+          transform: 'scale(1.1)',
+        })
+      ),
+    ]),
+
+    animate(
+      200,
+      style({
+        transform: 'scale(1)',
+      })
     ),
   ]),
 ]);
