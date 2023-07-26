@@ -167,3 +167,40 @@ export const formButtonTrigger = trigger('formButton', [
     ]),
   ]),
 ]);
+
+export const shakeTrigger = trigger('shakeAnimation', [
+  transition('* => *', [
+    // Dentro da função query podemos usar o seletor :self para atribuir a animação ao prórprio elemento
+    query('input.ng-invalid:focus, select.ng-invalid:focus', [
+      animate(
+        '0.5s',
+        keyframes([
+          style({
+            border: '2px solid red',
+          }),
+          style({
+            transform: 'translateX(-10px  )',
+          }),
+          style({
+            transform: 'translateX(10px )',
+          }),
+          style({
+            transform: 'translateX(-10px  )',
+          }),
+          style({
+            transform: 'translateX(10px )',
+          }),
+          style({
+            transform: 'translateX(-10px  )',
+          }),
+          style({
+            transform: 'translateX(10px )',
+          }),
+          style({
+            transform: 'translateX(0)',
+          }),
+        ])
+      ),
+    ]),
+  ]),
+]);

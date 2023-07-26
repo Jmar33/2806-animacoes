@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TarefaService } from 'src/app/service/tarefa.service';
 import { Tarefa } from '../interface/tarefa';
 import {
+  shakeTrigger,
   checkButtonTrigger,
   filterTrigger,
   formButtonTrigger,
@@ -22,6 +23,7 @@ import {
     checkButtonTrigger,
     filterTrigger,
     formButtonTrigger,
+    shakeTrigger,
   ],
 })
 export class ListaTarefasComponent implements OnInit {
