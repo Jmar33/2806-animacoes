@@ -2,6 +2,7 @@ import {
   animate,
   group,
   keyframes,
+  query,
   state,
   style,
   transition,
@@ -112,51 +113,57 @@ export const filterTrigger = trigger('filterAnimation', [
 
 export const formButtonTrigger = trigger('formButton', [
   transition('invalid => valid', [
-    // Podemos usar o group para combinar duas animações de forma que elas aconteçam de forma simultânea
-    group([
+    // Com o query podemos fazer animações mais específicas, já podemos falar exatamente qual será o elemento da dom que será animado
+    // Com o query podemos reutilizar a mesma animação para diferentes elementos
+    // Para fazer a associação no template o query deve ser usado sempre no elemento pai
+    query('#botao-salvar', [
+      // Podemos usar o group para combinar duas animações de forma que elas aconteçam de forma simultânea
+      group([
+        animate(
+          600,
+          style({
+            backgroundColor: '#63B77C',
+          })
+        ),
+        animate(
+          100,
+          style({
+            transform: 'scale(1.1)',
+          })
+        ),
+      ]),
+
       animate(
-        600,
+        200,
         style({
-          backgroundColor: '#63B77C',
-        })
-      ),
-      animate(
-        100,
-        style({
-          transform: 'scale(1.1)',
+          transform: 'scale(1)',
         })
       ),
     ]),
-
-    animate(
-      200,
-      style({
-        transform: 'scale(1)',
-      })
-    ),
   ]),
   transition('valid => invalid', [
-    // Podemos usar o group para combinar duas animações de forma que elas aconteçam de forma simultânea
-    group([
+    query('#botao-salvar', [
+      group([
+        animate(
+          600,
+          style({
+            backgroundColor: '#6C757D',
+          })
+        ),
+        animate(
+          100,
+          style({
+            transform: 'scale(1.1)',
+          })
+        ),
+      ]),
+
       animate(
-        600,
+        200,
         style({
-          backgroundColor: '#6C757D',
-        })
-      ),
-      animate(
-        100,
-        style({
-          transform: 'scale(1.1)',
+          transform: 'scale(1)',
         })
       ),
     ]),
-
-    animate(
-      200,
-      style({
-        transform: 'scale(1)',
-      })
-    ),
   ]),
 ]);
